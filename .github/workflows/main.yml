@@ -13,10 +13,10 @@ jobs:
     steps:
       # Checkout
       - name: Checkout repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       
-      - name: Upload Binary file to Google Drive folder MATSYA_REL_1_WITH_OEM
-        uses: Jodebu/upload-to-drive@v1
+      - name: Upload Binary file to Google Drive folder 
+        uses: Jodebu/upload-to-drive@v2
         with:
           target: README.md
           credentials: ${{ secrets.G_DRIVE }}
