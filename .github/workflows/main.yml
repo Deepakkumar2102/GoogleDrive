@@ -14,11 +14,6 @@ jobs:
       # Checkout
       - name: Checkout repository
         uses: actions/checkout@v1
-      # Setup Arduino-cli
-      # updates the configuration
-      - name: config 
-        run: arduino-cli config init
-      # updating core for Nodemcu
       
       - name: Upload Binary file to Google Drive folder MATSYA_REL_1_WITH_OEM
         uses: Jodebu/upload-to-drive@v1
