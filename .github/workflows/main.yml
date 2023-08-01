@@ -1,0 +1,30 @@
+
+name: Test
+on: 
+ push:
+    branches:
+    - main
+ pull_request:
+    branches:
+    - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      # Setup Arduino-cli
+      - name:  Arduino-cli Setup
+        uses: arduino/setup-arduino-cli@v1
+      # updates the configuration
+      - name: config 
+        run: arduino-cli config init
+      # updating core for Nodemcu
+      
+      - name: Upload Binary file to Google Drive folder MATSYA_REL_1_WITH_OEM
+        uses: Jodebu/upload-to-drive@v1
+        with:
+          target: README.md
+          credentials: ${{ secrets.GOOGLE_DRIVE_SECRET }}
+          folder: 1IeUYoCrl1KF2DVRNwcd16swYYhd7qjho
