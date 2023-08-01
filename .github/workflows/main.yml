@@ -26,5 +26,5 @@ jobs:
         uses: Jodebu/upload-to-drive@v1
         with:
           target: README.md
-          credentials: ${{ secrets.GOOGLE_DRIVE_SECRET }}
+          credentials: ${{ secrets.G_DRIVE }}
           folder: 1IeUYoCrl1KF2DVRNwcd16swYYhd7qjho
