@@ -13,10 +13,8 @@ jobs:
     steps:
       # Checkout
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
       # Setup Arduino-cli
-      - name:  Arduino-cli Setup
-        uses: arduino/setup-arduino-cli@v1
       # updates the configuration
       - name: config 
         run: arduino-cli config init
