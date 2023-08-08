@@ -24,11 +24,16 @@ jobs:
         distribution: 'adopt'
         cache: gradle
 
+    - name: Install Node.js
+      run: |
+        choco install nodejs
+        npm install -g @aws-amplify/cli
+
     - name: Pull AWS Amplify backend
       run: |
         cd Matsya
-        choco install nodejs
-        npm install -g @aws-amplify/cli
-        amplify init
+        amplify init --appId du2y1as979iad --envName dev
         amplify --version
-        amplify pull --appId du2y1as979iad --envName dev
+        amplify pull
+
+# Add more steps as needed for your build process
