@@ -29,6 +29,9 @@ jobs:
 
       - name: Pull AWS Amplify backend
         run: |
+          aws configure set aws_access_key_id AKIAYEIIWMRSDTCYPTW5
+          aws configure set aws_secret_access_key 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
+          aws configure set default.region us-east-1
           amplify init --appId du2y1as979iad --envName dev
           amplify --version
           amplify pull
