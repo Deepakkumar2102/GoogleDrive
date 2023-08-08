@@ -31,7 +31,6 @@ jobs:
 
     - name: Pull AWS Amplify backend
       run: |
-        cd Matsya
         amplify init --appId du2y1as979iad --envName dev
         amplify --version
         amplify pull
