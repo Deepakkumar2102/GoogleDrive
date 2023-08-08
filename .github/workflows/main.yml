@@ -1,23 +1,34 @@
-
 name: Test
-on: 
- push:
+
+on:
+  push:
     branches:
-    - main
- pull_request:
+      - main
+  pull_request:
     branches:
-    - main
+      - main
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+
+    runs-on: windows-latest
+
     steps:
-      # Checkout
-      - name: Checkout repository
-        uses: actions/checkout@v1
-      
-      - name: Upload Binary file to Google Drive folder 
-        uses: Jodebu/upload-to-drive@v1
-        with:
-          target: README.md
-          credentials: ${{ secrets.G_DRIVE }}
-          folder: 1H-N4IHU4vnmcXOB8AFlZGe2mA2ziqCqz
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+        cache: gradle
+
+    - name: Pull AWS Amplify backend
+      run: |
+        cd Matsya
+        choco install nodejs
+        npm install -g @aws-amplify/cli
+        amplify init
+        amplify --version
+        amplify pull --appId du2y1as979iad --envName dev
