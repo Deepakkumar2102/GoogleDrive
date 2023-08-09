@@ -1,24 +1,19 @@
-name: Pull Amplify Backend
+name: Amplify Pull
 
 on:
-  push:
+  push: # This workflow will be triggered on every push to the repository
     branches:
-      - main  # Adjust the branch as needed
+      - main # Adjust the branch name as needed
 
 jobs:
   amplify_pull:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest # Use a Windows environment
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2 # Checkout your repository code
 
-      - name: Install Amplify CLI
-        run: |
-          curl -sL https://aws-amplify.github.io/amplify-cli/install-win -o install.cmd
-          install.cmd
-          
-      - name: Pull Amplify Backend
-        run: |
-          amplify pull --appId du2y1as979iad --envName dev |
-          printf 'android\napp/src/main/res\nY\n'  # Providing the necessary inputs
+    - name: Install Amplify CLI and pull project
+      run: |
+        curl -sL https://aws-amplify.github.io/amplify-cli/install-win -o install.cmd && install.cmd
+        amplify pull --appId du2y1as979iad --envName dev
