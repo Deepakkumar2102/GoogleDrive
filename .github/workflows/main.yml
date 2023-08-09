@@ -15,5 +15,5 @@ jobs:
 
     - name: Install Amplify CLI and pull project
       run: |
-        curl -sL https://aws-amplify.github.io/amplify-cli/install-win -o install.cmd && install.cmd
-        #amplify pull --appId du2y1as979iad --envName dev
+       curl -sL https://aws-amplify.github.io/amplify-cli/install-win -o install.cmd cmd.exe /C install.cmd        
+       #amplify pull --appId du2y1as979iad --envName dev
