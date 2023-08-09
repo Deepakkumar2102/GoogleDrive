@@ -22,5 +22,5 @@ jobs:
         run: |
           curl -sL https://aws-amplify.github.io/amplify-cli/install-win -o install.cmd
           cmd /c install.cmd
-          cmd /c "C:\Users\runneradmin\.amplify\bin\amplify pull --appId du2y1as979iad --envName dev"
+          cmd /c C:\Users\runneradmin\.amplify\bin\amplify pull --appId du2y1as979iad --envName dev
 
