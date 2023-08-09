@@ -17,16 +17,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14  # Adjust to the Node.js version you need
-      - name: Set up AWS credentials
-        env:
-          AWS_ACCESS_KEY_ID: "AKIAYEIIWMRSDTCYPTW5"
-          AWS_SECRET_ACCESS_KEY: "vN7PoxSd12EC4ltVy2Nubx2lYRGXN0sEx915Itq4"
-          AWS_DEFAULT_REGION: us-west-1  # Set to your desired region
       - name: Install Amplify CLI
         run: |
-          aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-          aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-          aws configure set default.region $AWS_DEFAULT_REGION
+          aws configure set aws_access_key_id AKIAYEIIWMRSDTCYPTW5
+          aws configure set aws_secret_access_key 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
+          aws configure set default.region us-west-1
           curl -sL https://aws-amplify.github.io/amplify-cli/install-win -o install.cmd
           cmd /c install.cmd
 
