@@ -29,4 +29,4 @@ jobs:
           cmd /c c:\Users\runneradmin\.amplify\bin\amplify auth pull --appId du2y1as979iad --envName dev
       - name: Pull Amplify Project
         run: |
-          cmd /c c:\Users\runneradmin\.amplify\bin\amplify pull --appId du2y1as979iad --envName dev
+          cmd /c c:\Users\runneradmin\.amplify\bin\amplify pull --appId du2y1as979iad --envName dev -y
