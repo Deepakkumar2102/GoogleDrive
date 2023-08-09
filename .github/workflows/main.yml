@@ -1,19 +1,27 @@
 name: Amplify Pull
 
 on:
-  push: # This workflow will be triggered on every push to the repository
+  push:
     branches:
-      - main # Adjust the branch name as needed
+      - main  # Adjust to the branch you want to trigger the workflow on
 
 jobs:
-  amplify_pull:
-    runs-on: ubuntu-latest # Use a Windows environment
+  amplify-pull:
+    runs-on: windows-latest  # Use the latest available Windows runner
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2 # Checkout your repository code
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Install Amplify CLI and pull project
-      run: |
-       curl -sL https://aws-amplify.github.io/amplify-cli/install-win -o install.cmd cmd.exe /C install.cmd        
-       #amplify pull --appId du2y1as979iad --envName dev
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14  # Adjust to the Node.js version you need
+
+      - name: Install Amplify CLI
+        run: |
+          curl -sL https://aws-amplify.github.io/amplify-cli/install-win -o install.cmd
+          install.cmd
+
+      - name: Pull Amplify Project
+        run: amplify pull --appId du2y1as979iad --envName dev  # Replace with your values
