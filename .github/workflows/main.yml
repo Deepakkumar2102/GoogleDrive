@@ -1,25 +1,34 @@
-name: Amplify Pull
+name: AWS Amplify Deploy
 
 on:
   push:
     branches:
-      - main  # Adjust to the branch you want to trigger the workflow on
+      - main  # Change this to your main branch
 
 jobs:
-  amplify-pull:
-    runs-on: windows-latest  # Use the latest available Windows runner
+  deploy:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14  # Adjust to the Node.js version you need
+          node-version: '14'  # Change this to your desired Node.js version
+
+      - name: Install Dependencies
+        run: npm install
+
       - name: Install Amplify CLI
+        run: npm install -g @aws-amplify/cli
+
+      - name: Configure AWS Credentials
         run: |
-          curl -sL https://aws-amplify.github.io/amplify-cli/install-win -o install.cmd
-          cmd /c install.cmd
-          cmd /c c:\Users\runneradmin\.amplify\bin\amplify pull --appId du2y1as979iad --envName dev -y
-          
+          aws configure set aws_access_key_id "AKIAYEIIWMRSDTCYPTW5"
+          aws configure set aws_secret_access_key "vN7PoxSd12EC4ltVy2Nubx2lYRGXN0sEx915Itq4"
+          aws configure set default.region us-east-1  # Change this to your desired AWS region
+
+      - name: Deploy to Amplify
+        run: amplify pull
