@@ -24,7 +24,9 @@ jobs:
           aws configure set default.region us-west-1
           curl -sL https://aws-amplify.github.io/amplify-cli/install-win -o install.cmd
           cmd /c install.cmd
-
+      - name: Verify Amplify Pull Authentication
+        run: |
+          cmd /c c:\Users\runneradmin\.amplify\bin\amplify auth pull --appId du2y1as979iad --envName dev
       - name: Pull Amplify Project
         run: |
           cmd /c c:\Users\runneradmin\.amplify\bin\amplify pull --appId du2y1as979iad --envName dev
